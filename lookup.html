@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>VTECH Talking Whiz Kid Plus Word Lookup</title>
+</head>
+<body>
+<center>
+<p>Search Query:</p>
+<input type="text" id="search_word" value="d.ary"></input>
+<p>Word Length:</p>
+<input type="text" id="word_length" value="5"></input>
+</br>
+<button onclick="do_search()">Search</button>
+<p>Results</p>
+<textarea id="results"></textarea>
+</br>
+<a href="help.html">Examples</a>
+</center>
+</body>
+<script src="./resources.js"></script>
+<script>
+function do_search(){
+	var query=new RegExp(document.getElementById("search_word").value);
+	var word_length=Number.parseInt(document.getElementById("word_length").value);
+	document.getElementById("results").value="";
+	for(var i=0;i<STOCK_WORDS.length;i++){
+		if((STOCK_WORDS[i].toLowerCase().search(query)!=-1)&&STOCK_WORDS[i].length==word_length){
+			document.getElementById("results").value+=STOCK_WORDS[i]+"\n";
+		}
+	}
+}
+</script>
+</html>
